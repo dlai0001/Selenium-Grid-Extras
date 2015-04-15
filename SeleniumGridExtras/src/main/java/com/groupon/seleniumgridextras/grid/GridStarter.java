@@ -186,6 +186,14 @@ public class GridStarter {
     command.append(host);
     command.append(" -nodeConfig " + configFile);
 
+    // experimental, using native compilation vs JIT and server settings.
+    // This slows down the start time, but maximizes stability.
+    command.append(" -d64");
+    command.append(" -server");
+    command.append(" -Xcomp");
+    command.append(" -Xms512m");
+    command.append(" -Xmsx4g");
+
     return String.valueOf(command);
   }
 
